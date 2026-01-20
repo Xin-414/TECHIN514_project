@@ -20,4 +20,20 @@ The sensing device is battery-powered and enclosed in a compact housing that can
 
 ## Display Device
 
+The display device provides a physical and intuitive visualization of the cat’s feeding-related activity. It translates processed activity data into a gauge-based display that allows the user to quickly understand when it may be time to refill the food bowl.
+
+**Hardware Components**
+- Microcontroller: ESP32-C3
+- Stepper Motor: 28BYJ-48 stepper motor with ULN2003 driver
+- LEDs: Single or multiple LEDs for status indication
+- Button: Tactile push button for refill confirmation
+- Power: LiPo Battery (1000–2000 mAh)
+- Enclosure: Custom desktop enclosure for gauge display
+
+The ESP32 microcontroller receives activity data wirelessly from the sensing device. Based on the received activity level, the microcontroller controls the stepper motor to rotate the gauge needle to the appropriate position. Higher feeding-related activity moves the needle closer to the “refill” zone.
+
+LEDs provide additional visual feedback, such as indicating normal operation or alerting the user when a refill is recommended. A physical button allows the user to confirm that food has been refilled, which resets the gauge and activity state. The display device is battery-powered and designed as a standalone, easily visible desktop object.
+
+
+![alt text](images/display_device_sketch.jpg)
 ## System Architecture
