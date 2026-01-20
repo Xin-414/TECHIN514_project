@@ -49,7 +49,7 @@ The system consists of two main components: a sensing device placed near the cat
 
 The sensing device detects motion events near the food bowl using a motion or proximity sensor. An ESP32 microcontroller counts these events and aggregates them over time. Basic preprocessing is performed locally before the activity data is transmitted wirelessly to the display device.
 
-![alt text](images/data_processing_flow.png)
+![alt text](images/data_processing_flow.png)  
 *Figure: Data and algorithm flow from raw motion events to physical gauge movement.*
 
 Motion events are accumulated within a time window and smoothed using a simple digital signal processing technique, such as an exponential moving average (EMA), to reduce noise and short-term fluctuations. The resulting activity level is mapped to a corresponding gauge angle. The display device receives this value and controls a stepper motor to move the gauge needle accordingly. LEDs provide additional status feedback, and a button allows the user to confirm food refilling and reset the system state.
