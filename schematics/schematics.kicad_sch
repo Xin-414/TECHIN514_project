@@ -3404,7 +3404,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "716841f2-b005-4268-8e36-2479b16dc86d")
-		(property "Reference" "PIR（HC-SR501）"
+		(property "Reference" "PIR（HC-SR501）1"
 			(at 92.71 52.0699 0)
 			(effects
 				(font
@@ -3461,7 +3461,7 @@
 		(instances
 			(project ""
 				(path "/d41187f4-add6-4ad5-9a0b-abe487d6ba33"
-					(reference "PIR（HC-SR501）")
+					(reference "PIR（HC-SR501）1")
 					(unit 1)
 				)
 			)
