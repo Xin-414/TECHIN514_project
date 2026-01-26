@@ -1,0 +1,8 @@
+"#","Reference","Qty","Value","Footprint","DNP"
+"1","D1","1","LED","",""
+"2","M1","1","Stepper_Motor_bipolar","",""
+"3","PIR（HC-SR501）1","1","Conn_01x03","",""
+"4","R1, R2","2","R","",""
+"5","SW1","1","SW_Push","",""
+"6","U1, U2","2","ESP32_C3","RF_Module:WEMOS_C3_mini",""
+"7","U3","1","ULN2003","",""
