@@ -3389,7 +3389,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "14314258-14bb-4498-83f8-a03343278e6a")
-		(property "Reference" "PIR（HC-SR501）"
+		(property "Reference" "PIR（HC-SR501）1"
 			(at 118.11 56.642 0)
 			(effects
 				(font
@@ -3405,7 +3405,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical"
 			(at 113.03 63.5 0)
 			(effects
 				(font
@@ -3444,7 +3444,7 @@
 		(instances
 			(project ""
 				(path "/d41187f4-add6-4ad5-9a0b-abe487d6ba33"
-					(reference "PIR（HC-SR501）")
+					(reference "PIR（HC-SR501）1")
 					(unit 1)
 				)
 			)
