@@ -53,3 +53,16 @@ The sensing device detects motion events near the food bowl using a motion or pr
 *Figure: Data and algorithm flow from raw motion events to physical gauge movement.*
 
 Motion events are accumulated within a time window and smoothed using a simple digital signal processing technique, such as an exponential moving average (EMA), to reduce noise and short-term fluctuations. The resulting activity level is mapped to a corresponding gauge angle. The display device receives this value and controls a stepper motor to move the gauge needle accordingly. LEDs provide additional status feedback, and a button allows the user to confirm food refilling and reset the system state.
+
+## Power & Battery Analysis
+
+### Spreadsheet
+Google Sheets (view-only):  
+https://docs.google.com/spreadsheets/d/10LHwdyrkDoTDUunTCcTbiJU-1OUqTOgCYg1e28etRiU/edit?usp=sharing
+
+### Screenshots
+- Sensor Device Power Model  
+  ![sensor_device_power](sensor_device_power.png)
+
+- Display Device Power Model  
+![display_device_power.png](display_device_power.png)
