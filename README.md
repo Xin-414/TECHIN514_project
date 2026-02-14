@@ -11,8 +11,8 @@ The sensing device is placed near the cat’s food bowl to detect when the cat a
 **Hardware Components**
 - Microcontroller: ESP32-C3
 - Motion / Proximity Sensor: PIR Motion Sensor (HC-SR501)
-- Power: LiPo Battery (500–1000 mAh)
-- Additional components: Power switch, voltage regulator
+- Power: LiPo Battery (500 mAh)
+- Additional components: LED, resistors
 
 When motion is detected near the food bowl, the sensor sends a signal to the ESP32 microcontroller. The microcontroller counts motion events and records them over time. Basic preprocessing is performed locally before the activity data is sent wirelessly to the display device.
 
