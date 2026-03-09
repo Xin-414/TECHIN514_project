@@ -9,10 +9,10 @@ This project tracks how often a cat visits the food bowl area using a motion sen
 The sensing device is placed near the cat’s food bowl to detect when the cat approaches the feeding area. It captures feeding-related activity by monitoring motion events around the bowl over time.
 
 **Hardware Components**
-- Microcontroller: ESP32-C3
-- Motion / Proximity Sensor: PIR Motion Sensor (HC-SR501)
-- Power: LiPo Battery (500 mAh)
-- Additional components: LED, resistors
+- Microcontroller: ESP32-S3
+- Motion Sensor: PIR Motion Sensor (HC-SR501)
+- Power: USB Power
+- Additional components: LED, resistors, capacitors
 
 When motion is detected near the food bowl, the sensor sends a signal to the ESP32 microcontroller. The microcontroller counts motion events and records them over time. Basic preprocessing is performed locally before the activity data is sent wirelessly to the display device.
 
@@ -27,10 +27,10 @@ The display device provides a physical and intuitive visualization of the cat’
 
 **Hardware Components**
 - Microcontroller: ESP32-C3
-- Stepper Motor: 28BYJ-48 stepper motor with ULN2003 driver
-- LEDs: Single or multiple LEDs for status indication
+- Stepper Motor: X27.168 bipolar stepper motor
+- LEDs: Single LED for status indication
 - Button: Tactile push button for refill confirmation
-- Power: LiPo Battery (1000–2000 mAh)
+- Power: LiPo Battery (820 mAh)
 - Enclosure: Custom desktop enclosure for gauge display
 
 The ESP32 microcontroller receives activity data wirelessly from the sensing device. Based on the received activity level, the microcontroller controls the stepper motor to rotate the gauge needle to the appropriate position. Higher feeding-related activity moves the needle closer to the “refill” zone.
