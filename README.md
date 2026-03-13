@@ -62,7 +62,7 @@ https://docs.google.com/spreadsheets/d/10LHwdyrkDoTDUunTCcTbiJU-1OUqTOgCYg1e28et
 
 ### Screenshots
 - Sensor Device Power Model  
-  ![sensor_device_power](sensor_device_power.png)
+  ![sensor_device_power](images\sensor_device_power.png)
 
 - Display Device Power Model  
-![display_device_power.png](display_device_power.png)
+![display_device_power.png](images\display_device_power.png)
