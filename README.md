@@ -64,8 +64,8 @@ Detects motion events near the food bowl and sends activity counts wirelessly to
 
 Placed in a visible location for the owner.
 ![display device](<images/display device.JPG>)
-Components:
 
+Components:  
 - Seeed XIAO ESP32-C3
 - X27.168 bipolar stepper motor gauge
 - LED indicator
@@ -90,7 +90,7 @@ The system includes custom circuit schematics and PCB layout for both sensing an
 
 Motion signals from the PIR sensor are filtered using a debounce time window to avoid multiple triggers from a single visit.
 
-Processing pipeline:
+Processing pipeline:  
 ![signal](<images/signal pipeline.png>)
 
 During testing, the system detected **18 out of 20 simulated bowl visits**, resulting in an estimated **90% detection accuracy**. :contentReference[oaicite:0]{index=0}
