@@ -103,7 +103,7 @@ Demo video: https://drive.google.com/file/d/1uZkeXHpC4BiWEvxUYPUGvsP9ljvaZRCp/vi
 
 ---
 
-# Battery Considerations
+## Battery Considerations
 
 The display device is powered by a **3.7V 1000mAh LiPo battery**.
 
@@ -121,14 +121,14 @@ Google Sheets (view-only):
 https://docs.google.com/spreadsheets/d/10LHwdyrkDoTDUunTCcTbiJU-1OUqTOgCYg1e28etRiU/edit?usp=sharing
 
 ### Screenshots
+- Display Device Power Model  
+  ![display_device_power.png](images/display_device_power.png)
 - Sensor Device Power Model  
   ![sensor_device_power](images/sensor_device_power.png)
 
-- Display Device Power Model  
-  ![display_device_power.png](images/display_device_power.png)
 ---
 
-# Budget Summary
+## Budget Summary
 
 | Component | Quantity | Cost |
 |-----------|----------|------|
@@ -142,7 +142,7 @@ Total project cost is approximately **$40–50** depending on sourcing and addit
 
 ---
 
-# Future Work
+## Future Work
 
 Possible future improvements include:
 
