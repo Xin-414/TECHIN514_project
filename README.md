@@ -1,60 +1,120 @@
 # Cat Feeding Activity Indicator
 
-This project tracks how often a cat visits the food bowl area using a motion sensor. Feeding-related activity is estimated over time and shown on a physical gauge display to indicate when it may be time to refill food.
+A connected device system that monitors how frequently a cat visits its food bowl and provides a physical gauge display to indicate when it may be time to refill the food.
 
-![alt text](images/sketch.png)
+This project was developed for TECHIN 514.
+![connected devices](<images/Connected devices.png>)
 
-## Sensor Device
+---
 
-The sensing device is placed near the cat’s food bowl to detect when the cat approaches the feeding area. It captures feeding-related activity by monitoring motion events around the bowl over time.
+## Overview
 
-**Hardware Components**
-- Microcontroller: ESP32-S3
-- Motion Sensor: PIR Motion Sensor (HC-SR501)
-- Power: USB Power
-- Additional components: LED, resistors, capacitors
+Cat owners often do not know when their cat’s food bowl needs refilling. Cats may repeatedly visit an empty bowl without the owner noticing.
 
-When motion is detected near the food bowl, the sensor sends a signal to the ESP32 microcontroller. The microcontroller counts motion events and records them over time. Basic preprocessing is performed locally before the activity data is sent wirelessly to the display device.
+This project addresses this problem by monitoring motion near the food bowl and visualizing feeding-related activity through a physical gauge display.
 
-The sensing device is battery-powered and enclosed in a compact housing that can be mounted near the food bowl without disturbing the cat.
+![sketch](images/sketch.png)
+*Figure: Design sketches.*
 
-![alt text](images/sensor_device_sketch.jpg)
-*Figure: Detailed sketch of the sensing device placed near the food bowl, showing the motion/proximity sensor, ESP32 microcontroller, battery, and enclosure.*
+The system consists of two connected devices:  
+• **Sensor Device** – detects cat motion near the food bowl  
+• **Display Device** – visualizes feeding activity using a gauge needle and LED indicator
 
-## Display Device
+When the cat frequently approaches the bowl, the system indicates that the bowl may need refilling.
 
-The display device provides a physical and intuitive visualization of the cat’s feeding-related activity. It translates processed activity data into a gauge-based display that allows the user to quickly understand when it may be time to refill the food bowl.
-
-**Hardware Components**
-- Microcontroller: ESP32-C3
-- Stepper Motor: X27.168 bipolar stepper motor
-- LEDs: Single LED for status indication
-- Button: Tactile push button for refill confirmation
-- Power: LiPo Battery (820 mAh)
-- Enclosure: Custom desktop enclosure for gauge display
-
-The ESP32 microcontroller receives activity data wirelessly from the sensing device. Based on the received activity level, the microcontroller controls the stepper motor to rotate the gauge needle to the appropriate position. Higher feeding-related activity moves the needle closer to the “refill” zone.
-
-LEDs provide additional visual feedback, such as indicating normal operation or alerting the user when a refill is recommended. A physical button allows the user to confirm that food has been refilled, which resets the gauge and activity state. The display device is battery-powered and designed as a standalone, easily visible desktop object.
-
-![alt text](images/display_device_sketch.jpg)
-*Figure: Sketch of the display device showing the gauge driven by a stepper motor, LED indicators, a user button, internal ESP32 microcontroller, battery, and enclosure.*
+---
 
 ## System Architecture
 
-The system consists of two main components: a sensing device placed near the cat’s food bowl and a separate display device that visualizes feeding-related activity. These two devices communicate wirelessly to form a distributed sensing and display system.
+The system includes two ESP32-based devices communicating wirelessly using **ESP-NOW**.
+![system architecture](<images/System Architecture.png>)
 
-![alt text](images/system_communication_diagram.jpg)
-*Figure: System-level diagram showing wireless communication between the sensing device and the display device.*
+Workflow:
 
-The sensing device detects motion events near the food bowl using a motion or proximity sensor. An ESP32 microcontroller counts these events and aggregates them over time. Basic preprocessing is performed locally before the activity data is transmitted wirelessly to the display device.
+PIR Motion Detection  
+→ Event Debounce Filtering  
+→ Activity Counter  
+→ Wireless Transmission (ESP-NOW)  
+→ Gauge Needle Rotation  
+→ LED Alert
 
-![alt text](images/data_processing_flow.png)  
-*Figure: Data and algorithm flow from raw motion events to physical gauge movement.*
+---
 
-Motion events are accumulated within a time window and smoothed using a simple digital signal processing technique, such as an exponential moving average (EMA), to reduce noise and short-term fluctuations. The resulting activity level is mapped to a corresponding gauge angle. The display device receives this value and controls a stepper motor to move the gauge needle accordingly. LEDs provide additional status feedback, and a button allows the user to confirm food refilling and reset the system state.
+## Hardware Components
 
-## Power & Battery Analysis
+### Sensor Device
+
+Placed near the cat’s food bowl.
+![sensor device](<images/sensor device.JPG>)
+
+Components:
+- PIR Motion Sensor (HC-SR501)
+- Seeed XIAO ESP32-S3
+- Capacitors
+- Resistor
+- USB-C power
+
+Function:
+
+Detects motion events near the food bowl and sends activity counts wirelessly to the display device.
+
+---
+
+### Display Device
+
+Placed in a visible location for the owner.
+![display device](<images/display device.JPG>)
+Components:
+
+- Seeed XIAO ESP32-C3
+- X27.168 bipolar stepper motor gauge
+- LED indicator
+- Push button switch
+- 330Ω resistor
+- 3.7V 1000mAh LiPo battery
+
+Function:
+
+Receives activity data and maps it to a gauge needle position that indicates feeding activity level.
+
+---
+## Schematics & PCB layout
+
+The system includes custom circuit schematics and PCB layout for both sensing and display devices.
+![schemetics](images/schematics.png)
+*Figure: Schematics*
+![PCB for sensor device](<images/PCB layout.png>)
+*Figure: PCB layout of sensor device.*
+
+## Signal Processing
+
+Motion signals from the PIR sensor are filtered using a debounce time window to avoid multiple triggers from a single visit.
+
+Processing pipeline:
+![signal](<images/signal pipeline.png>)
+
+During testing, the system detected **18 out of 20 simulated bowl visits**, resulting in an estimated **90% detection accuracy**. :contentReference[oaicite:0]{index=0}
+
+---
+
+## Demo
+
+Demo video: https://drive.google.com/file/d/1uZkeXHpC4BiWEvxUYPUGvsP9ljvaZRCp/view
+
+---
+
+# Battery Considerations
+
+The display device is powered by a **3.7V 1000mAh LiPo battery**.
+
+Battery life estimation was calculated based on:
+
+- ESP32 power consumption  
+- LED activity  
+- Stepper motor usage  
+- Communication duty cycle
+
+Power analysis was used to determine expected operating duration and ensure reliable device operation.
 
 ### Spreadsheet
 Google Sheets (view-only):  
@@ -66,3 +126,34 @@ https://docs.google.com/spreadsheets/d/10LHwdyrkDoTDUunTCcTbiJU-1OUqTOgCYg1e28et
 
 - Display Device Power Model  
   ![display_device_power.png](images/display_device_power.png)
+---
+
+# Budget Summary
+
+| Component | Quantity | Cost |
+|-----------|----------|------|
+| ESP32-C3 | 2 | $21.98 |
+| LiPo Battery | 2 | $15.90 |
+| PIR Motion Sensor | 1 | — |
+| X27 Stepper Motor | 1 | — |
+| Other components (resistors, LEDs, capacitors) | — | — |
+
+Total project cost is approximately **$40–50** depending on sourcing and additional components.
+
+---
+
+# Future Work
+
+Possible future improvements include:
+
+**Behavior-aware detection**  
+Improve sensing reliability and reduce false triggers caused by nearby motion.
+
+**Machine learning analysis**  
+Use motion pattern analysis to distinguish feeding behavior from other movement near the bowl.
+
+**Multi-device ecosystem**  
+Support multiple food bowls or multiple pets by connecting additional sensor devices.
+
+**Data logging and mobile interface**  
+Store feeding activity data and visualize it through a mobile application or dashboard.
